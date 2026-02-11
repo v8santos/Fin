@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Bill;
-use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -85,7 +84,7 @@ class BillController extends Controller
         return response()->json(['message' => 'Conta editada com sucesso.', 'bill' => $bill]);
     }
 
-    public function delete(Bill $bill): JsonResponse
+    public function delete(Request $request, Bill $bill): JsonResponse
     {
         try {
             if ($bill->user_id !== $request->user()->id) {
