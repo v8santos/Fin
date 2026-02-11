@@ -1,25 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
-use Laravel\Fortify\Features;
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canRegister' => Features::enabled(Features::registration()),
-    ]);
-})->name('home');
+Route::view('/', 'welcome');
 
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::view('dashboard', 'dashboard')
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
 
-    Route::get('dashboard', function () {
-    return Inertia::render('Dashboard');
-})->name('dashboard');
-Route::get('bills', function () {
-    return Inertia::render('bills/List');
-})->name('bills');
-});
+Route::view('profile', 'profile')
+    ->middleware(['auth'])
+    ->name('profile');
 
-
-
-require __DIR__.'/settings.php';
+require __DIR__.'/auth.php';
