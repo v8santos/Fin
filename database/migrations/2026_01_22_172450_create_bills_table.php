@@ -16,7 +16,7 @@ return new class extends Migration
 
             $table->unsignedBigInteger('amount');
             $table->string('label')->nullable();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignUlid('user_id')->constrained();
             $table->boolean('paid')->default(false);
             $table->unsignedBigInteger('amount_paid');
 

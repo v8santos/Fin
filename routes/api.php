@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\BillController;
 use App\Http\Controllers\Api\TokenController;
+use App\Http\Controllers\Api\TransactionController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->group(function () {
@@ -17,6 +19,8 @@ Route::middleware('auth:sanctum')->group(function () {
 		Route::put('/{bill}/update', [BillController::class, 'update'])->name('update');
 		Route::delete('/{bill}/delete', [BillController::class, 'delete'])->name('delete');
 	});
+
+	Route::get('transactions', TransactionController::class)->name('transactions');
 });
 
-require __DIR__.'/auth.php';
+Route::post('login', [AuthController::class, 'getAccessToken']);
