@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enum\TransactionTypeEnum;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -24,4 +25,11 @@ class Transaction extends Model
         'executed_at',
         'created_at',
     ];
+
+    protected function casts(): array
+    {
+        return [
+            'type' => TransactionTypeEnum::class,
+        ];
+    }
 }

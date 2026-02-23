@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Enum\TransactionTypeEnum;
+use App\Models\Obligation;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -24,7 +25,7 @@ class TransactionFactory extends Factory
             'type' => fake()->randomElement(TransactionTypeEnum::class),
             'direction' => fake()->randomElement([-1,1]),
             'description' => fake()->text(),
-            'obligation_id' => null,
+            'obligation_id' => Obligation::factory(),
             'executed_at' => fake()->dateTime(),
         ];
     }
