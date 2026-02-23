@@ -12,14 +12,6 @@ Route::middleware('auth:sanctum')->group(function () {
 	    Route::get('/all', [TokenController::class, 'getAll'])->middleware('ability:token:read');
 	});
 
-	Route::prefix('bills')->name('bills.')->group(function () {
-		Route::get('/all', [BillController::class, 'getAll'])->name('get.all');
-		Route::get('/search', [BillController::class, 'search'])->name('search');
-		Route::post('/store', [BillController::class, 'store'])->name('store');
-		Route::put('/{bill}/update', [BillController::class, 'update'])->name('update');
-		Route::delete('/{bill}/delete', [BillController::class, 'delete'])->name('delete');
-	});
-
 	Route::get('transactions', TransactionController::class)->name('transactions');
 });
 
