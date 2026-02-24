@@ -10,8 +10,10 @@ class Account extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'amount',
-        'user_id',
+        // Os valores de amount de todas as contas do usuário
+        // serão somados e retornados em uma rota de consulta de saldo
+        'name', // Nome da banco ou outro tipo de conta que o usuário possui
+        'amount', // Valor em conta
+        'user_id', // Id do dono da conta
     ];
 }
