@@ -10,14 +10,16 @@ class Commitment extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
-        'fixed_amount',
-        'is_variable',
-        'description',
-        'is_active',
-        'rrule',
-        'start_date',
-        'end_date',
-        'last_generated_at',
+        'fixed_amount', // Valor fixo, para compromissos com valor já bem definido, ex.: Aluguel
+        'is_variable', // Diz se o valor é variável
+        'description', // Descreve sobre o que é o compromisso
+        'is_active', // Diz se esse compromisso está ativo
+        'user_id', // dono do recurso
+        'account_id', // id da conta bancária do usuário
+        'rrule', // Regra de recorrência, padrão icalendar (RFC 5545)
+        'start_date', // Data de inicio da recorrência
+        'end_date', // Data final da recorrência
+        'next_date', // Data para gerar a próxima cobrança
+        'last_generated_at', // Data para qual o compromisso gerou a ultima cobrança
     ];
 }

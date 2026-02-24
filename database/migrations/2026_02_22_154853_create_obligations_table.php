@@ -19,7 +19,8 @@ return new class extends Migration
             $table->tinyInteger('status');
             $table->string('description');
             $table->date('due_date');
-            $table->foreignUlid('user_id');
+            $table->foreignId('user_id');
+            $table->foreignId('account_id');
             $table->foreignId('commitment_id')->nullable();
 
             $table->timestamps();

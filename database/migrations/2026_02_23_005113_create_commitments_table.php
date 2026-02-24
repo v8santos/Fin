@@ -14,14 +14,16 @@ return new class extends Migration
         Schema::create('commitments', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignUlid('user_id');
             $table->bigInteger('fixed_amount')->nullable();
             $table->boolean('is_variable');
             $table->string('description');
             $table->boolean('is_active');
+            $table->foreignId('user_id');
+            $table->foreignId('account_id');
             $table->text('rrule');
             $table->date('start_date');
             $table->date('end_date')->nullable();
+            $table->date('next_date')->nullable();
             $table->date('last_generated_at')->nullable();
 
             $table->timestamps();

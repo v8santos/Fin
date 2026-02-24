@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Enum\ObligationStatusEnum;
 use App\Enum\ObligationTypeEnum;
+use App\Models\Account;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -26,6 +27,7 @@ class ObligationFactory extends Factory
             'description' => fake()->text(),
             'due_date' => fake()->date(),
             'user_id' => User::factory(),
+            'account_id' => Account::factory(),
             'commitment_id' => null,
         ];
     }

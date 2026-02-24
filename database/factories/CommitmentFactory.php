@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Account;
 use App\Models\Obligation;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -19,7 +20,6 @@ class CommitmentFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::factory(),
             'fixed_amount' => fake()->randomNumber(),
             'is_variable' => fake()->boolean(),
             'description' => fake()->text(),
@@ -27,6 +27,8 @@ class CommitmentFactory extends Factory
             'rrule' => 'FREQ=MONTHLY;COUNT=10;BYMONTHDAY=4',
             'start_date' => today(),
             'end_date' => now()->addMonths(10),
+            'user_id' => User::factory(),
+            'account_id' => Account::factory(),
             'last_generated_at' => null,
         ];
     }

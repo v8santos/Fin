@@ -16,14 +16,14 @@ class Transaction extends Model
     const UPDATED_AT = null;
 
     protected $fillable = [
-        'user_id',
-        'amount',
-        'type',
-        'direction',
-        'description',
-        'obligation_id',
-        'executed_at',
-        'created_at',
+        'amount', // Valor que foi transacionado.
+        'type', // Tipo de transação: Entrada, saída, extorno, etc.
+        'direction', // Diz, principalmente, se o saldo vai sair ou entrar para a carteira do usuário: -1 ou 1.
+        'description', // Descreve o que é aquela transação
+        'user_id', // Dono do recurso
+        'account_id', // id da conta usada pelo usuário
+        'obligation_id', // id da cobrança que gerou essa transação, se tiver uma.
+        'executed_at', // Data que a transação realmente foi executada.
     ];
 
     protected function casts(): array

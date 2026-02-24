@@ -12,13 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('transactions', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->id();
 
-            $table->foreignUlid('user_id');
             $table->unsignedBigInteger('amount');
             $table->tinyInteger('type');
             $table->tinyInteger('direction');
             $table->string('description');
+            $table->foreignId('user_id');
+            $table->foreignId('account_id');
             $table->foreignId('obligation_id')->nullable();
             $table->timestamp('executed_at');
 
