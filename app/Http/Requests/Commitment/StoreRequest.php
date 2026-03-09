@@ -52,27 +52,4 @@ class StoreRequest extends FormRequest
             ],
         ];
     }
-
-    public function withValidator(Validator $validator)
-    {
-        $validator->after(function ($validator) {
-            if ($this->frequency === 'WEEKLY' && empty($this->by_days)) {
-                $validator->errors()->add('by_days', 'Recorrência semanal exige ao menos um dia da semana selecionado');
-            }
-
-            if ($this->frequency === 'MONTHLY') {
-                if (empty($this->by_month_days) && empty($this->by_days)) {
-                    $validator->errors()->add('frequency', 'Recorrência mensal exige ao menos um dia do mês ou um dia da semana selecionados');
-                }
-
-                if (!empty($this->by_month_days) && !empty($this->by_days)) {
-                    $validator->errors()->add('frequency', 'Recorrência mensal não pode conter dia do mês e dia específico da semana combinados');
-                }
-            }
-
-            if (!empty($this->by_days_frequencies) && empty($this->by_days)) {
-                $validator->errors()->add('by_days_frequencies', 'O campo de frequência diária não pode existir sem um dia da semana selecionado');
-            }
-        });
-    }
 }
