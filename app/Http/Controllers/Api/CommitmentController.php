@@ -38,7 +38,7 @@ class CommitmentController extends Controller
             'user_id' => $request->user()->id,
             'account_id' => $account->id,
             'fixed_amount' => $request->input('fixed_amount'),
-            'is_variable' => $request->input('is_variable', false),
+            'is_variable' => $request->is_variable,
             'description' => $request->input('description'),
             'start_date' => $request->input('start_date', today()->format('Y-m-d')),
             'end_date' => $request->input('end_date'),

@@ -24,7 +24,7 @@ class StoreRequest extends FormRequest
     {
         return [
             'fixed_amount' => 'sometimes|integer',
-            'is_variable' => 'sometimes|boolean',
+            'is_variable' => 'required|boolean',
             'description' => 'required|string|min:3',
             'account_id' => 'sometimes|integer', // Pode ser conveniente transformar isso em uuid
 
@@ -41,7 +41,7 @@ class StoreRequest extends FormRequest
             'weekdays.*' => 'in:SU,MO,TU,WE,TH,FR,SA',
 
             // Para regra mensal e anual. Até porque precisamos do dia do mês em recorrência anual também
-            'day_of_month' => 'required_if:frequency,MONTHLY,YEARLY',
+            'day_of_month' => 'required_if:frequency,MONTHLY,YEARLY|integer|min:1|max:31',
 
             // Anual
             'month' => [
