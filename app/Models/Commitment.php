@@ -13,7 +13,7 @@ class Commitment extends Model
         'fixed_amount', // Valor fixo, para compromissos com valor já bem definido, ex.: Aluguel
         'is_variable', // Diz se o valor é variável
         'description', // Descreve sobre o que é o compromisso
-        'is_active', // Diz se esse compromisso está ativo
+        'is_active', // Diz se esse compromisso está ativo. Default: true
         'user_id', // dono do recurso
         'account_id', // id da conta bancária do usuário
         'rrule', // Regra de recorrência, padrão icalendar (RFC 5545)

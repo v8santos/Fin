@@ -17,7 +17,7 @@ return new class extends Migration
             $table->bigInteger('fixed_amount')->nullable();
             $table->boolean('is_variable');
             $table->string('description');
-            $table->boolean('is_active');
+            $table->boolean('is_active')->default(true);
             $table->foreignId('user_id');
             $table->foreignId('account_id');
             $table->text('rrule');

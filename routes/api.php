@@ -1,17 +1,29 @@
 <?php
 
+use App\Http\Controllers\Api\AccountController;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\CommitmentController;
 use App\Http\Controllers\Api\TokenController;
 use App\Http\Controllers\Api\TransactionController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->group(function () {
 	Route::prefix('tokens')->name('tokens.')->group(function () {
-	    Route::post('/create', [TokenController::class, 'getAll'])->middleware('ability:token:create');
+	    Route::post('/create', [TokenController::class, 'store'])->middleware('ability:token:create');
 	    Route::get('/all', [TokenController::class, 'getAll'])->middleware('ability:token:read');
 	});
 
 	Route::get('transactions', TransactionController::class)->name('transactions');
+
+	Route::prefix('accounts')->name('accounts.')->group(function () {
+	    Route::get('/', [AccountController::class, 'index'])->name('index');
+	    Route::post('/create', [AccountController::class, 'create'])->name('create');
+	});
+
+	Route::prefix('commitments')->name('commitments.')->group(function () {
+		Route::post('/', [CommitmentController::class, 'index'])->name('index');
+		Route::post('/create', [CommitmentController::class, 'store'])->name('create');
+	});
 });
 
 Route::post('login', [AuthController::class, 'getAccessToken']);
