@@ -21,8 +21,8 @@ Route::middleware('auth:sanctum')->group(function () {
 	});
 
 	Route::prefix('commitments')->name('commitments.')->group(function () {
-		Route::post('/', [CommitmentController::class, 'index'])->name('index');
-		Route::post('/create', [CommitmentController::class, 'store'])->name('create');
+		Route::get('/', [CommitmentController::class, 'index'])->name('index');
+		Route::post('/create', [CommitmentController::class, 'create'])->name('create');
 	});
 });
 
